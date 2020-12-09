@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <p class="nav-link active">Корзина</p>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'shop' %}">Вернуться к покупкам</a>
+        </li>
+        <li class="nav-item">
+            {% if items %}
+            <a class="nav-link" href="{% url 'clear_cart' %}">Очистить корзину</a>
+            {% else %}
+            <a class="nav-link disabled" href="{% url 'clear_cart' %}" tabindex="-1" aria-disabled="true">Очистить
+                корзину</a>
+            {% endif %}
+        </li>
+    </ul>
+    {% if form %}
+    <div class="card" style="margin: 0 auto; width: 600px">
+        <div class="card-header text-center">
+            <h5 class="lead">
+                <b>Оформление заказа</b>
+            </h5>
+        </div>
+        <div class="card-body">
+            <form action="{% url 'new_order' %}" method="get" class="text-center">
+                {{form|crispy}}
+                <button class="btn btn-primary" type="submit"> Подтвердить</button>
+            </form>
+        </div>
+    </div>
+    {% else %}
+    <div class="card" style="margin: 0 auto; width: 600px">
+        <div class="card-body text-center">
+            <img src="/static/svg/success.svg" style="width: 50px">
+            <h3>Спасибо за ваш заказ! №{{ order.pk }}</h3>
+            <ul class="list-group list-group-flush mt-2">
+                        {% for item in items %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <p><img src="{{ item.item.image.url }}" style="width: 100px"></p>
+                                </div>
+                                <div class="col text-center">
+                                    <p>{{ item.count }} ед.</p>
+                                </div>
+                                <div class="col text-right">
+                                    <p>{{ item.item.price }} грн</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+        </div>
+    </div>
+    <a class="btn btn-primary btn-block mt-2 mb-2" href="{% url 'shop' %}" style="width: 600px; margin:0 auto">Вернуться к покупкам</a>
+    {% endif %}
+</div>
+
+
+{% endblock %}

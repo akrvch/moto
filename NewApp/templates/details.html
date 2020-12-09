@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for item in items%}
+<div class="container-fluid mt-4">
+    <div class="row pb-3" style="border-bottom: #b3b7bb 2px solid">
+        <div class="col">
+            <img class="img-thumbnail" src="{{ item.image.url }}" style="width: 600px">
+        </div>
+        <div class="col">
+            <h3>{{ item.moto_model }}</h3>
+            <p style="font-size: medium">{{ item.brand }}</p>
+            <h5 class="mt-5">{{ item.price }} грн</h5>
+            <div class="row">
+                <a class="btn btn-primary btn-lg ml-3 mt-5" href="{% url 'add_to_cart' item.pk 'cart' %}">Купить</a>
+            </div>
+        </div>
+        <div class="col">
+            <p class="lead"><b>Год выпуска: </b>{{ item.date_release }}</p>
+            <p class="lead"><b>Двигатель: </b>{{ item.engine }}</p>
+            <p class="lead"><b>Мощность: </b>{{ item.power }}</p>
+            <p class="lead"><b>Макс. скорость: </b>{{ item.speed }}</p>
+            <p class="lead"><b>Тип: </b>{{ item.type }}</p>
+            <p class="lead"><b>Вес: </b>{{ item.weight }} кг</p>
+        </div>
+    </div>
+    <div class="row">
+    <h1 class="display-3 mb-4">Описание</h1>
+        <p class="lead">
+            {{ item.description }}
+        </p>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

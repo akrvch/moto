@@ -1,0 +1,11 @@
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg" class="bi bi-person">
+
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="18" width="18" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <path fill="#ffffff" id="svg_1" d="m10,5a2,2 0 1 1 -4,0a2,2 0 0 1 4,0zm-2,3a3,3 0 1 0 0,-6a3,3 0 0 0 0,6zm6,5c0,1 -1,1 -1,1l-10,0s-1,0 -1,-1s1,-4 6,-4s6,3 6,4zm-1,-0.004c-0.001,-0.246 -0.154,-0.986 -0.832,-1.664c-0.652,-0.652 -1.879,-1.332 -4.168,-1.332c-2.29,0 -3.516,0.68 -4.168,1.332c-0.678,0.678 -0.83,1.418 -0.832,1.664l10,0z" fill-rule="evenodd"/>
+ </g>
+</svg>

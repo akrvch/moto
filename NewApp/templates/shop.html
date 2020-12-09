@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+
+<div class="container-fluid mt-2">
+
+    <div class="row">
+        <div class="col-sm-2 bg-light">
+            <form class="mt-2" action="{% url 'filter' %}" method="get">
+                <div class="text-left">
+                    <h4 class="text-center">Производитель</h4>
+                    <ul class="list-group list-group-flush">
+                        {% for vendor in vendors %}
+                        <li class="list-group-item">
+                            <input type="checkbox" name="vendor" value="{{ vendor.vendor }}">
+                            <span>{{ vendor.vendor }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="text-left">
+                    <h4 class="text-center">Типы</h4>
+                    <ul class="list-group list-group-flush">
+                        {% for type in moto_types %}
+                        <li class="list-group-item">
+                            <input type="checkbox" name="type" value="{{ type.id }}">
+                            <span>{{ type.type }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="text-left">
+                    <h4 class="text-center">Подходит новчикам</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <input type="checkbox" name="newbie" value="True">
+                            <span>Для новичков</span>
+                        </li>
+                        <li class="list-group-item">
+                            <input type="checkbox" name="newbie" value="False">
+                            <span>Для опытных</span>
+                        </li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary btn-block mb-2" type="submit">Подобрать</button>
+            </form>
+
+        </div>
+        <div class="col-sm-10">
+            {% if bike_list%}
+            <div class="row">
+                {% for bike in bike_list %}
+                <div class="card mb-3 mr-2 ml-2" style="width: 290px; height: 500px">
+                    <img src="{{ bike.image.url }}" class="card-img-top" style="width: 288px; height: 160px"
+                         alt="{{ bike.name }}">
+                    <div class="card-body">
+                        <div class="row mb-0">
+                            <div class="col text-left">
+                                <h5 class="card-title mb-0">{{ bike.moto_model }}
+                                </h5>
+                                {% if bike.newbie %}
+                                <p style="font-size: small"> {{ bike.brand }} <a
+                                        href="http://127.0.0.1:8000/shop/filter/?newbie=True"
+                                        class="badge badge-success" style="font-size: small">Подходит новичкам</a></p>
+                                {% else %}
+                                <p style="font-size: small"> {{ bike.brand }}</p>
+                                {% endif %}
+                            </div>
+                            <div class="col text-right">
+                                <p class="lead"><b>{{ bike.price }} грн</b></p>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush lead" style="color: #7A7F8D">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="/static/svg/engine.svg" style="max-width: 25px">
+                                </div>
+                                <div class="col text-right">
+                                    {{ bike.engine }}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="/static/svg/hp.svg" style="max-width: 25px">
+                                </div>
+                                <div class="col text-right">
+                                    {{ bike.power }} л.с.
+                                </div>
+                            </div>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <img src="/static/svg/speed.svg" style="max-width: 25px">
+                                </div>
+                                <div class="col text-right">
+                                    {{ bike.max_speed }} км/ч
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="card-body mt-0">
+                        <div class="row">
+                            <div class="col">
+                                <a href="{% url 'details' bike.pk %}" class="btn btn-outline-primary" style="width: 100px">Обзор</a>
+                            </div>
+                            <div class="col">
+                                <a href="{% url 'add_to_cart' bike.pk 'shop' %}" class="btn btn-primary" style="width: 100px">В
+                                    корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                <div class="text-center">
+                    <h5 class="display-3" style="margin-top: 15rem">Ничего не найдено :(</h5>
+                    <a class="btn btn-primary mt-2" href="{% url 'shop' %}">Вернуться</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

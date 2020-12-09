@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-2">
+    <div class="row">
+        <div class="col-sm-8">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <p class="nav-link active">Корзина</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'shop' %}">Вернуться к покупкам</a>
+                </li>
+                <li class="nav-item">
+                    {% if items %}
+                    <a class="nav-link" href="{% url 'clear_cart' %}">Очистить корзину</a>
+                    {% else %}
+                    <a class="nav-link disabled" href="{% url 'clear_cart' %}" tabindex="-1" aria-disabled="true">Очистить
+                        корзину</a>
+                    {% endif %}
+                </li>
+            </ul>
+            {% for item in items %}
+            <div class="card mb-3" style="width: 900px; height: 190px">
+                <div class="row no-gutters">
+                    <div class="col">
+                        <img src="{{ item.item.image.url }}" class="card-img" alt="..." style="max-height: 188px; max-width: 350px">
+                    </div>
+                    <div class="col">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.item }}</h5>
+                            <p class="card-text">{{ item.count }}</p>
+                            <p class="card-text"><small class="text-muted">{{ item.item.price }} </small></p>
+                            <a class="btn btn-primary" href="{% url 'delete_item' item.pk %}">Удалить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="col-sm-4">
+
+            <div class="card">
+                <div class="card-header">
+                    Ваш заказ:
+                </div>
+                <ul class="card-body">
+                    <h5 class="card-title"> {{ summary }} товаров</h5>
+                    <ul class="list-group list-group-flush">
+                        {% for item in items %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col text-left">
+                                    <p><b>{{ item.item }}</b></p>
+                                </div>
+                                <div class="col text-center">
+                                    <p>{{ item.count }} ед.</p>
+                                </div>
+                                <div class="col text-right">
+                                    <p>{{ item.item.price }} грн</p>
+                                </div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="row">
+                        <div class="col ml-2">
+                            {% if items %}
+                            <a href="{% url 'order' %}" class="btn btn-primary">Оформить</a>
+                            {% else %}
+                            <a href="#" class="btn btn-primary disabled" tabindex="-1" aria-disabled="true">Оформить</a>
+                            {% endif %}
+                        </div>
+                        <div class="col ml-4">
+                            <h5>На сумму:</h5>
+                        </div>
+                        <div class="col ml-0">
+                            <p class="lead">{{ total }} грн</p>
+                        </div>
+                    </div>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-sm-8">
+            <h1 class="display-4 pb-3" style="border-bottom: #b3b7bb 2px solid"><b>Доставка</b></h1>
+            <ul class="mt-5">
+                <h5><b>Общие условия:</b></h5>
+                <ul>
+                    <li>Срок резерва – 2 дня от планируемой даты выдачи.</li>
+                    <li>Дата выдачи указывается при подтверждении заказа.</li>
+                    <li>Доступна оплата подарочным сертификатом.</li>
+                    <li>Вы можете оплатить заказ в магазине картой или наличными.</li>
+                    <li>Во всех наших магазинах есть возможность произвести тест-драйв при наличии прав категории А.</li>
+                </ul>
+            </ul>
+            <ul class="mt-2">
+                <h5><b>Как заказать:</b></h5>
+                <ul>
+                    <li>Выберите товар</li>
+                    <li>Выберите точку самовывоза из списка</li>
+                    <li>Подтвердите заказ и сделайте предоплату онлайн.</li>
+                    <li>Получите заказ с документом, удостоверяющим личность.</li>
+                </ul>
+            </ul>
+            <ul class="mt-2">
+                <h5><b>Условия доставки:</b></h5>
+                <ul>
+                    <li>Доставка бесплатная.</li>
+                    <li>Срок хранения заказа – 1 день после планируемой даты выдачи.</li>
+                    <li>Доставляются товары в точку выдачи только по предоплате.</li>
+                    <li>Невозможно отказаться от части заказа.</li>
+                    <li>Возможна отсрочка получения по предварительному согласованию.</li>
+                </ul>
+            </ul>
+        </div>
+        <div class="col ml-4">
+            <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+                <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div>
+                <script>(function () {
+                    var setting = {
+                        "height": 600,
+                        "width": 420,
+                        "zoom": 15,
+                        "queryString": "Киевский национальный торгово-экономический университет, улица Киото, Киев, Украина",
+                        "place_id": "ChIJrb2hghPP1EARKnItMxv5-PA",
+                        "satellite": false,
+                        "centerCoord": [50.465135269240456, 30.638265400000012],
+                        "cid": "0xf0f8f91b332d722a",
+                        "lang": "ru",
+                        "cityUrl": "/ukraine/kiev",
+                        "cityAnchorText": "Карта [CITY1], Киевская область, Украина",
+                        "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3",
+                        "embed_id": "318101"
+                    };
+                    var d = document;
+                    var s = d.createElement('script');
+                    s.src = 'https://1map.com/js/script-for-user.js?embed_id=318101';
+                    s.async = true;
+                    s.onload = function (e) {
+                        window.OneMap.initMap(setting)
+                    };
+                    var to = d.getElementsByTagName('script')[0];
+                    to.parentNode.insertBefore(s, to);
+                })();</script>
+                <a href="https://1map.com/ru/map-embed">1 Map</a></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

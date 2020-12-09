@@ -1,0 +1,127 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="accordion" id="accordionExample">
+                <div class="card">
+                    <div class="card-header" id="headingOne"
+                         style="background: #dfdedd; border-bottom: #b3b7bb 2px solid">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+                                    data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <h5 class="display-4" style="color: #1b1e21">
+                                    Мы находимся по адресу
+                                </h5>
+                            </button>
+                        </h2>
+                    </div>
+
+                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                         data-parent="#accordionExample">
+                        <div class="card-body" style="background: #dfdedd;">
+                            <dl class="row">
+                                <dt class="col-sm-3">Киев</dt>
+                                <dd class="col-sm-9"><p>ул. Пушкина, 17/Б 16501</p>
+                                    <p>+38(063)-160-04-77</p>
+                                    <p>ул. Чехова, 21 16500</p>
+                                    <p>+38(097)-160-04-77</p>
+                                </dd>
+                                <dt class="col-sm-3">Днепр</dt>
+                                <dd class="col-sm-9"><p>ул. Коломойского, 88 22501</p>
+                                    <p>+38(063)-160-04-77</p>
+                                    <p>ул. Филатова, 11 22500</p>
+                                    <p>+38(097)-160-04-77</p>
+                                </dd>
+                                <dt class="col-sm-3">Одесса</dt>
+                                <dd class="col-sm-9"><p>ул. Дерибасовская, 12 10001</p>
+                                    <p>+38(063)-160-04-77</p>
+                                    <p>ул. Драменбейсовская, 32 10000</p>
+                                    <p>+38(097)-160-04-77</p>
+                                </dd>
+
+                                <dt class="col-sm-3">График работы</dt>
+                                <dd class="col-sm-9">
+                                    <dl class="row">
+                                        <dt class="col-sm-4 text-center"><p>Пн - Пт</p>
+                                            <p>Сб - Вс</p></dt>
+                                        <dd class="col-sm-8"><p>9:00 - 19:00</p>
+                                            <p>12:00 - 17:00</p>
+                                        </dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header" id="headingTwo"
+                         style="background: #dfdedd; border-bottom: #b3b7bb 2px solid">
+                        <h2 class="mb-0">
+                            <button class="btn btn-link btn-block text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false"
+                                    aria-controls="collapseTwo">
+                                <h5 class="display-4" style="color: #1b1e21">
+                                    Связаться с нами
+                                </h5>
+                            </button>
+                        </h2>
+                    </div>
+                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                        <div class="card-body" style="background: #dfdedd;">
+                            <dl class="row">
+                                <dt class="col-sm-3">Call-центр</dt>
+                                <dd class="col-sm-9"><p>Бесплатно по всей территории Украины</p>
+                                    <p>8 800 555 35 35</p>
+                                </dd>
+                                <dt class="col-sm-3">График работы</dt>
+                                <dd class="col-sm-9">
+                                    <dl class="row">
+                                        <dt class="col-sm-4 text-center"><p>Пн - Вс</p></dt>
+                                        <dd class="col-sm-8"><p>0:00 - 24:00</p>
+                                        </dd>
+                                    </dl>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col ml-4">
+            <div id="wrapper-9cd199b9cc5410cd3b1ad21cab2e54d3">
+                <div id="map-9cd199b9cc5410cd3b1ad21cab2e54d3"></div>
+                <script>(function () {
+                    var setting = {
+                        "height": 600,
+                        "width": 420,
+                        "zoom": 15,
+                        "queryString": "Киевский национальный торгово-экономический университет, улица Киото, Киев, Украина",
+                        "place_id": "ChIJrb2hghPP1EARKnItMxv5-PA",
+                        "satellite": false,
+                        "centerCoord": [50.465135269240456, 30.638265400000012],
+                        "cid": "0xf0f8f91b332d722a",
+                        "lang": "ru",
+                        "cityUrl": "/ukraine/kiev",
+                        "cityAnchorText": "Карта [CITY1], Киевская область, Украина",
+                        "id": "map-9cd199b9cc5410cd3b1ad21cab2e54d3",
+                        "embed_id": "318101"
+                    };
+                    var d = document;
+                    var s = d.createElement('script');
+                    s.src = 'https://1map.com/js/script-for-user.js?embed_id=318101';
+                    s.async = true;
+                    s.onload = function (e) {
+                        window.OneMap.initMap(setting)
+                    };
+                    var to = d.getElementsByTagName('script')[0];
+                    to.parentNode.insertBefore(s, to);
+                })();</script>
+                <a href="https://1map.com/ru/map-embed">1 Map</a></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

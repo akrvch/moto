@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col col-sm-3" style="border-right: #b3b7bb 2px solid">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'my_orders' %}">Мои заказы</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_change_password' %}">Сменить пароль</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'account_logout' %}">Выйти</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col">
+            {% for order in orders %}
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6> Заказ №{{ order.pk }} </h6>
+                </div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+
+                                </div>
+                                <div class="col">
+                                    Наименование товара
+                                </div>
+                                <div class="col">
+                                    Количество
+                                </div>
+                                <div class="col">
+                                    Цена за ед.
+                                </div>
+                            </div>
+                        </li>
+                        {% for item in items %}
+                        {% if order == item.order_id %}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col">
+                                    <img class="img-thumbnail" src="{{ item.item.image.url }}" style="width: 100px">
+                                </div>
+                                <div class="col">
+                                    {{ item.item }}
+                                </div>
+                                <div class="col">
+                                    {{ item.count }} ед.
+                                </div>
+                                <div class="col">
+                                    {{ item.item.price }} грн
+                                </div>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
