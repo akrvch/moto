@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('NewApp', '0007_auto_20201126_2025'),
+        ('newApp', '0007_auto_20201126_2025'),
     ]
 
     operations = [
@@ -18,7 +18,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('count', models.IntegerField(default=0)),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.motorcycle')),
+                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.motorcycle')),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),

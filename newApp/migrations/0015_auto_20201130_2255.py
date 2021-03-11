@@ -7,18 +7,18 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('NewApp', '0014_auto_20201130_1643'),
+        ('newApp', '0014_auto_20201130_1643'),
     ]
 
     operations = [
         migrations.AlterField(
             model_name='nonloggedorderitem',
             name='item',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.motorcycle'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.motorcycle'),
         ),
         migrations.AlterField(
             model_name='orderitem',
             name='item',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.motorcycle'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.motorcycle'),
         ),
     ]

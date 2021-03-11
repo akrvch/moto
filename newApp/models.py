@@ -46,6 +46,7 @@ class Motorcycle(models.Model):
     date_adding = models.DateTimeField(auto_now_add=True)
     newbie = models.BooleanField(default=False)
     weight = models.IntegerField(default=0)
+    public = models.BooleanField(default=False)
 
     class Meta:
         verbose_name = 'Мотоцикл'

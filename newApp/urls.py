@@ -1,5 +1,5 @@
 from django.urls import path, include
-from NewApp import views
+from newApp import views
 
 
 urlpatterns = [
@@ -19,4 +19,5 @@ urlpatterns = [
     path('oplata/', views.oplata, name='oplata'),
     path('shop/details/<int:pk>/', views.shop_detailed, name='details'),
     path('my_orders/', views.my_orders, name='my_orders'),
+    path('test_task/', views.test_task),
 ]

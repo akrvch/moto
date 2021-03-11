@@ -9,7 +9,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('NewApp', '0010_motorcycle_newbie'),
+        ('newApp', '0010_motorcycle_newbie'),
     ]
 
     operations = [
@@ -42,8 +42,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('count', models.IntegerField(default=1)),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.motorcycle')),
-                ('order_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.order')),
+                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.motorcycle')),
+                ('order_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.order')),
             ],
         ),
         migrations.CreateModel(
@@ -51,8 +51,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('count', models.IntegerField(default=1)),
-                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.motorcycle')),
-                ('order_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='NewApp.nonloggedorder')),
+                ('item', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.motorcycle')),
+                ('order_id', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='newApp.nonloggedorder')),
             ],
         ),
     ]

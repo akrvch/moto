@@ -1,8 +1,26 @@
 from django.db.models import Q
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
+from rest_framework.authtoken.models import Token
+from rest_framework.decorators import api_view, authentication_classes
 from .models import *
 from .forms import OrderForm, NonLoggedOrderForm
+
+
+@api_view(['GET'])
+@authentication_classes([BasicAuthentication, SessionAuthentication])
+def test_task(request):
+    moto_types = MotoTypes.objects.all()
+    vendors = MotoVendor.objects.all()
+    try:
+        token = Token.objects.filter(user=request.user)
+        if token:
+            bikes = Motorcycle.objects.all()
+        else:
+            bikes = Motorcycle.objects.filter(public=True)
+    except:
+        bikes = Motorcycle.objects.filter(public=True)
+    return render(request, 'shop.html', {'bike_list': bikes, 'moto_types': moto_types, 'vendors': vendors})
 
 
 # view домашней страницы

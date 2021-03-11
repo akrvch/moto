@@ -6,7 +6,7 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('NewApp', '0008_nonloggedcart'),
+        ('newApp', '0008_nonloggedcart'),
     ]
 
     operations = [

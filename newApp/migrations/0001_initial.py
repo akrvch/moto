@@ -37,8 +37,8 @@ class Migration(migrations.Migration):
                 ('description', models.TextField(max_length=300)),
                 ('date_release', models.DateField()),
                 ('date_adding', models.DateTimeField(auto_now_add=True)),
-                ('brand', models.ForeignKey(max_length=30, on_delete=django.db.models.deletion.CASCADE, to='NewApp.motovendor')),
-                ('type', models.ForeignKey(max_length=30, on_delete=django.db.models.deletion.CASCADE, to='NewApp.mototypes')),
+                ('brand', models.ForeignKey(max_length=30, on_delete=django.db.models.deletion.CASCADE, to='newApp.motovendor')),
+                ('type', models.ForeignKey(max_length=30, on_delete=django.db.models.deletion.CASCADE, to='newApp.mototypes')),
             ],
         ),
     ]
